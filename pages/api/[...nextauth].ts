@@ -30,7 +30,7 @@ export default NextAuth({
                 });
 
                 if(!user || !user.hashedPassword){
-                    throw new error('Email does not exist!')
+                    throw new Error('Email does not exist!')
                 }
 
                 const isCorrectPassword = await compare(credentials.password,user.hashedPassword);
@@ -45,7 +45,15 @@ export default NextAuth({
     ],
     pages: {
         signIn:'/auth',
-    
     },
     debug: process.env.NODE_ENG === 'development',
-})
+    session:{
+        strategy:'jwt',
+    },
+    jwt:{
+        secret:process.env.NEXTAUTH_JWT_SECRET,
+
+    },
+    secret:process.env.NEXTAUTH_SECRET,
+
+});
