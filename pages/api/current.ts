@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import serverAuth from "@/lib/serverauth";
-import { reduceEachTrailingCommentRange } from "typescript";
+import serverAuth from "@/lib/serverAuth";
 
 export default async (req:NextApiRequest, res:NextApiResponse) => {
     if(req.method !== 'GET'){
